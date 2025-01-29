@@ -146,4 +146,4 @@ VALUES
     ('4f8e8eba-f1cc-4223-a1ce-894c78065086',	'chong ge', NULL, NULL, NULL, NULL),
     ('8256b1dc-8af1-4963-bfa4-10be0f55d817',	'xiang ge wife', NULL, NULL, NULL, NULL),
     ('1fc68ff9-97d9-444d-8b91-0cc7b0476972',	'chong ge', NULL, NULL, NULL, NULL)
-ON CONFLICT (uuid, actual_name) DO NOTHING;
+ON CONFLICT (uuid) DO NOTHING;
