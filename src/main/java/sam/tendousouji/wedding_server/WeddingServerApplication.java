@@ -18,7 +18,11 @@ public class WeddingServerApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/submit").allowedOrigins("http://localhost:3000");
+				registry.addMapping("/submit")
+						.allowedOrigins("https://samting.github.io/")
+						.allowedMethods("POST")
+						.allowedHeaders("*")
+						.allowCredentials(true);
 			}
 		};
 	}
