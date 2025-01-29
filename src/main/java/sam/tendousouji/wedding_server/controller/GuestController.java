@@ -1,17 +1,20 @@
 package sam.tendousouji.wedding_server.controller;
 
-import sam.tendousouji.wedding_server.entity.GuestEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import sam.tendousouji.wedding_server.entity.GuestEntity;
 import sam.tendousouji.wedding_server.entity.UninvitedGuestEntity;
 import sam.tendousouji.wedding_server.repository.GuestRepository;
 import sam.tendousouji.wedding_server.repository.UninvitedGuestRepository;
 
+import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class GuestController {
     @Autowired
@@ -49,6 +52,16 @@ public class GuestController {
         guestRepository.save(guest);
 
         return ResponseEntity.status(HttpStatus.OK).body(HttpStatus.OK);
+    }
+
+    @GetMapping("/guests")
+    public List<GuestEntity> getAllGuests() {
+        return guestRepository.findAll();
+    }
+
+    @GetMapping("/otherguests")
+    public List<UninvitedGuestEntity> getAllOtherGuests() {
+        return uninvitedGuestRepository.findAll();
     }
 }
 
